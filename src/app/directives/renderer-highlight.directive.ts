@@ -1,10 +1,12 @@
-import {Directive, ElementRef, HostBinding, HostListener, OnInit, Renderer2} from '@angular/core';
+import {Directive, ElementRef, HostBinding, HostListener, Input, OnInit, Renderer2} from '@angular/core';
 
 @Directive({
   selector: '[appRendererHighlight]'
 })
 export class RendererHighlightDirective implements OnInit{
 
+  @Input() defaultColor: string = 'red';
+  @Input() highlightColor: string = 'yellow';
   //peste tot in cod se va inlocui sintaxa:
   // element.nativeElement.style.backgroundColor (cu)-> this.color => scriem mai putin cod
   //la liniile unde se afla HostListener unde setam backgorund color-ul
@@ -24,7 +26,8 @@ export class RendererHighlightDirective implements OnInit{
     this.renderer.setStyle(
       this.element.nativeElement,
       'background-color',
-      'red'
+      // 'red'
+      this.highlightColor
     );
     // this.color = 'red';
   }
@@ -34,7 +37,8 @@ export class RendererHighlightDirective implements OnInit{
     this.renderer.setStyle(
       this.element.nativeElement,
       'background-color',
-      'yellow'
+      // 'yellow'
+      this.defaultColor
     );
   }
 
