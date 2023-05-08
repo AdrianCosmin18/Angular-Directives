@@ -6,3 +6,13 @@
 <div [defaultColor]="'blue'" [highlightColor]="'orange'" appRendererHighlight>
   Please add the background color red
 </div>
+
+<div *ngIf="isAvailable; then thenBlock">Show the div is available is true</div>
+
+<ng-template #thenBlock>
+  <div>Show the div is available is true</div>
+</ng-template>
+
+<div *appAlternateIf="isAvailable">this condition enables with custom directves</div>
+
+<button class="btn btn-warning" (click)="isAvailable = !isAvailable">Toogle condition</button>
